@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addContact, delateContact, filterContact } from './actions';
+import { addContact, delateContact, filterValue } from './actions';
 
 const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
 const initialState = [
@@ -29,8 +29,7 @@ export const contactReducer = createReducer(parsedContacts || initialState, {
     localStorage.setItem('contacts', JSON.stringify(delateList));
     return delateList;
   },
-  [filterContact]: (state, action) =>
-    state.filter(contact =>
-      contact.name.toLowerCase().includes(action.payload.toLowerCase())
-    ),
+});
+export const filterReducer = createReducer('', {
+  [filterValue]: (state, action) => action.payload,
 });

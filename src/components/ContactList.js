@@ -3,10 +3,11 @@ import s from './ContactList.module.css';
 import { delateContact } from '../redux/actions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { getNecessaryName } from 'redux/selector';
 
 export default function ContactList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getNecessaryName);
   console.log(contacts);
   return (
     <>

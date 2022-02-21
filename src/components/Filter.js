@@ -1,17 +1,16 @@
 import s from './Filter.module.css';
-import { useState } from 'react';
-import { filterContact } from '../redux/actions';
-import { useDispatch } from 'react-redux';
+import { filterValue } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilter } from 'redux/selector';
 
 export default function Filter() {
-  const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
+  const value = useSelector(getFilter);
 
   const inputChange = e => {
     const { value } = e.currentTarget;
 
-    setFilter(value);
-    dispatch(filterContact(filter));
+    dispatch(filterValue(value));
   };
   return (
     <>
@@ -19,7 +18,7 @@ export default function Filter() {
       <input
         className={s.input}
         name="filter"
-        value={filter}
+        value={value}
         type="input"
         onChange={inputChange}
       ></input>

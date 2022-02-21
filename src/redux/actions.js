@@ -6,4 +6,5 @@ const addContact = createAction('contact/add', (name, number) => ({
 }));
 const delateContact = createAction('contact/delate');
 const filterContact = createAction('contact/filter');
-export { addContact, delateContact, filterContact };
+const filterValue = createAction('filter/value');
+export { addContact, delateContact, filterContact, filterValue };
